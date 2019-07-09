@@ -21,7 +21,7 @@ module ShopifyApiMixins
           when 429
             wait_time = e.response['Retry-After'].to_i
             wait_time = RetryOn429.min_wait if wait_time < RetryOn429.min_wait
-            puts "429, retry in #{wait_time} seconds"
+            #puts "429, retry in #{wait_time} seconds"
             sleep(wait_time)
             next
           else
