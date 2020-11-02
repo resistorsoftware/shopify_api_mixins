@@ -21,7 +21,7 @@ module ShopifyApiMixins
         begin
           return yield
         rescue ActiveResource::ServerError => e
-          if time_of_first_try < RetryOn5xx.max_wait.ago
+          if time_of_first_try < RetryOn5xx.max_wait
             actual_wait_time = Time.now - time_of_first_try
             #logger&.error "Recieved too many server errors. Retried #{retries} times over the course of #{actual_wait_time} seconds. Last error was #{e.response.code}: #{e.response.message}:\n#{e.response.body}"
             raise
