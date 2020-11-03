@@ -25,7 +25,6 @@ module ShopifyApiMixins
             sleep(wait_time)
             next
           else
-            puts "Other error than 429!: #{e.message}"
             raise
           end
         end
